@@ -21,9 +21,9 @@ During the retainer period, Consultant will provide:
 
 | | |
 |---|---|
-| **Monthly retainer fee** | $[AMOUNT] |
-| **Included hours** | [X] hours/month |
-| **Overage rate** | $150/hour |
+| **Monthly retainer fee** | $3,000 (Priority Support) / $6,000 (Fractional CTO) |
+| **Included hours** | 8 hours (Priority) / 16 hours (Fractional CTO) per month |
+| **Overage rate** | $250/hour |
 | **Billing cycle** | 1st of each month, net-7 |
 
 Hours are tracked and reported monthly. Unused hours do not roll over.
