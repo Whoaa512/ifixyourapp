@@ -1,0 +1,22 @@
+{
+  "name": "worker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild", "workerd"]
+  },
+  "keywords": [],
+  "author": "CJ Winslow <github@cjwinslow.com> (https://github.com/whoaa512)",
+  "license": "ISC",
+  "packageManager": "pnpm@10.26.0",
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260507.1",
+    "typescript": "^6.0.3",
+    "wrangler": "^4.88.0"
+  }
+}

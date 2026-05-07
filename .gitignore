@@ -1,3 +1,6 @@
 node_modules/
 coverage/
 *.local.*
+.claude/tsc-cache
+.wrangler/
+.dev.vars

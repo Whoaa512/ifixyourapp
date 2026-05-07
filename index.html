@@ -225,7 +225,7 @@
         <h2 class="font-display text-4xl md:text-6xl tracking-tight text-white mb-4">Get a free diagnostic.</h2>
         <p class="text-lg text-muted mb-14">30 minutes. I review your app before the call and come with specific observations. No pitch deck, no sales team.</p>
 
-        <form action="https://formspree.io/f/PLACEHOLDER" method="POST" class="space-y-6">
+        <form id="apply-form" class="space-y-6">
             <div class="grid md:grid-cols-2 gap-4">
                 <div>
                     <label for="name" class="block text-sm font-medium text-muted mb-2 uppercase tracking-wide">Name</label>
@@ -290,8 +290,47 @@
                 Submit Application
             </button>
             <p class="text-sm text-muted text-center">I review every application within 48 hours.</p>
+            <div id="form-status" class="hidden text-center py-4 text-lg font-semibold"></div>
         </form>
     </section>
+
+    <script>
+    const form = document.getElementById('apply-form');
+    const btn = form.querySelector('button[type="submit"]');
+    const status = document.getElementById('form-status');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      btn.disabled = true;
+      btn.textContent = 'Submitting...';
+      status.classList.add('hidden');
+
+      const data = Object.fromEntries(new FormData(form));
+
+      try {
+        const res = await fetch('https://ifixyourapp-api.winslowcj5.workers.dev/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+
+        if (res.ok) {
+          form.reset();
+          status.textContent = "Application received. I'll review it within 48 hours.";
+          status.className = 'text-center py-4 text-lg font-semibold text-green-400';
+        } else {
+          const err = await res.json();
+          throw new Error(err.error || 'Submission failed');
+        }
+      } catch (e) {
+        status.textContent = 'Something went wrong. Email hello@ifixyour.app instead.';
+        status.className = 'text-center py-4 text-lg font-semibold text-red-400';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Submit Application';
+      }
+    });
+    </script>
 
     <!-- Footer -->
     <footer class="px-6 py-16 border-t border-border">

@@ -1,0 +1,11 @@
+name = "ifixyourapp-api"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "ifixyourapp-submissions"
+database_id = "e89e2475-4ed3-4969-b0da-02414ccd1d0a"
+
+[vars]
+NOTIFY_PHONE = "6263216391"
