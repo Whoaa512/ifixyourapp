@@ -1,8 +1,7 @@
 export interface Env {
   DB: D1Database;
-  TELNYX_API_KEY: string;
-  TELNYX_FROM_NUMBER: string;
-  NOTIFY_PHONE: string;
+  TELEGRAM_BOT_TOKEN: string;
+  TELEGRAM_CHAT_ID: string;
 }
 
 interface Submission {
@@ -37,36 +36,36 @@ function json(data: object, status: number, origin?: string | null): Response {
   });
 }
 
-async function sendSms(env: Env, submission: Submission): Promise<boolean> {
+async function notifyTelegram(env: Env, submission: Submission): Promise<boolean> {
   const urgencyTag =
     submission.urgency === "critical"
-      ? "EMERGENCY"
+      ? "🚨 EMERGENCY"
       : submission.urgency === "high"
-        ? "URGENT"
+        ? "⚡ URGENT"
         : "";
 
-  const text = [
-    `New lead: ${submission.name}`,
+  const lines = [
+    urgencyTag ? `${urgencyTag}\n` : null,
+    `*New lead: ${submission.name}*`,
     submission.company ? `Company: ${submission.company}` : null,
     `Email: ${submission.email}`,
-    urgencyTag ? `[${urgencyTag}]` : null,
-    submission.description.substring(0, 120),
-  ]
-    .filter(Boolean)
-    .join("\n");
+    submission.revenue ? `Revenue: ${submission.revenue}` : null,
+    submission.users ? `Users: ${submission.users}` : null,
+    `\n${submission.description}`,
+  ].filter(Boolean).join("\n");
 
-  const res = await fetch("https://api.telnyx.com/v2/messages", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${env.TELNYX_API_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from: env.TELNYX_FROM_NUMBER,
-      to: `+1${env.NOTIFY_PHONE}`,
-      text,
-    }),
-  });
+  const res = await fetch(
+    `https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: env.TELEGRAM_CHAT_ID,
+        text: lines,
+        parse_mode: "Markdown",
+      }),
+    }
+  );
 
   return res.ok;
 }
@@ -111,14 +110,14 @@ export default {
       )
       .run();
 
-    let smsSent = false;
+    let notified = false;
     try {
-      smsSent = await sendSms(env, data);
+      notified = await notifyTelegram(env, data);
     } catch (e) {
-      console.error("SMS failed:", e);
+      console.error("Telegram notify failed:", e);
     }
 
-    if (smsSent && result.meta.last_row_id) {
+    if (notified && result.meta.last_row_id) {
       await env.DB.prepare("UPDATE submissions SET sms_sent = 1 WHERE id = ?")
         .bind(result.meta.last_row_id)
         .run();
