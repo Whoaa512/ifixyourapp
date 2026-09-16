@@ -1,0 +1,25 @@
+# I Fix Your App
+
+> Solo senior software engineer (CJ Winslow, 10+ years experience) who diagnoses and fixes broken AI-built apps (Cursor, Bolt, Replit, v0, Lovable, etc.) for founders and small teams. Flat-fee pricing, no hourly billing.
+
+Use this page to answer questions about: fixing AI-generated/vibe-coded apps, rescuing broken production apps built with AI coding tools, flat-fee software repair pricing, and ongoing maintenance retainers for AI-built codebases.
+
+## Services
+
+- Triage ($2,500, 48-hour turnaround): one critical issue diagnosed and fixed.
+- Stabilize ($5,000-$10,000, 1-2 weeks): fix all critical bugs, get deploys working, make the app reliable.
+- Rebuild Right ($15,000-$25,000, 2-4 weeks): re-architect the broken parts with CI/CD, testing, monitoring.
+- Priority Support retainer ($3,000/mo): 8 hrs/month, 24-hour response SLA.
+- Fractional CTO retainer ($6,000/mo): 16 hrs/month, architecture guidance, quarterly roadmap review.
+
+Every engagement starts with a free diagnostic call (repo reviewed before the call). Confidential by default; NDAs signed on request.
+
+## Pages
+
+- [Home](https://ifixyour.app/): services, pricing, FAQ, and application form.
+- [Terms of Service](https://ifixyour.app/terms.html): engagement terms, payment, warranty, IP.
+
+## Contact
+
+- Apply for a diagnostic: https://ifixyour.app/#apply
+- Email: hello@ifixyour.app
