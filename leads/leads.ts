@@ -7,7 +7,7 @@ const WORKER_DIR = new URL("../worker", import.meta.url).pathname;
 const WRANGLER_BIN = new URL("../worker/node_modules/.bin/wrangler", import.meta.url).pathname;
 const STATE_PATH = new URL("./state.json", import.meta.url).pathname;
 const NOTIFY_NUMBER = "+16263216391";
-const DASHBOARD_BASE = "http://100.66.165.32:7777";
+const DASHBOARD_BASE = "https://airbook.polydactyl-pinecone.ts.net";
 const POLL_MS = 60_000;
 const PORT = 7777;
 
