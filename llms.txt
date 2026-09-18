@@ -17,6 +17,11 @@ Every engagement starts with a free diagnostic call (repo reviewed before the ca
 ## Pages
 
 - [Home](https://ifixyour.app/): services, pricing, FAQ, and application form.
+- [Fix Your Cursor App](https://ifixyour.app/fix/cursor/): common Cursor failure modes (context loss, cascading fixes, unreviewed autonomous edits) and the fix process.
+- [Fix Your Lovable App](https://ifixyour.app/fix/lovable/): common Lovable failure modes (preview-vs-production gaps, Supabase RLS, Stripe/webhooks) and the fix process.
+- [Fix Your Bolt.new App](https://ifixyour.app/fix/bolt/): common Bolt.new failure modes (token/context blowup, build-vs-runtime gaps, deploy failures) and the fix process.
+- [Fix Your Replit App](https://ifixyour.app/fix/replit/): common Replit Agent failure modes (unrelated edits, fix loops, missing auth model, destructive data actions) and the fix process.
+- [Fix Your v0 App](https://ifixyour.app/fix/v0/): common v0 failure modes (missing backend logic, unrequested changes, hidden security gaps) and the fix process.
 - [Terms of Service](https://ifixyour.app/terms.html): engagement terms, payment, warranty, IP.
 
 ## Contact
