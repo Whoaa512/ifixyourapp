@@ -4,3 +4,5 @@ coverage/
 .claude/tsc-cache
 .wrangler/
 .dev.vars
+leads/state.json
+leads/leads.log
